@@ -16,6 +16,10 @@ const iconMapping = {
   windy: wind,
 };
 
+const convertFahrenheitToCelsius = (tempF) => {
+  return (((tempF - 32) * 5) / 9).toFixed(2);
+};
+
 const MiniCard = ({ time, temp, iconString }) => {
   const [icon, setIcon] = useState(sun);
 
@@ -28,6 +32,8 @@ const MiniCard = ({ time, temp, iconString }) => {
       setIcon(matchedIcon ? iconMapping[matchedIcon] : sun);
     }
   }, [iconString]);
+
+  const tempC = convertFahrenheitToCelsius(temp);
 
   return (
     <div className="glassCard w-[10rem] h-[10rem] p-4 flex flex-col">
@@ -42,7 +48,7 @@ const MiniCard = ({ time, temp, iconString }) => {
       <div className="w-full flex justify-center items-center flex-1">
         <img src={icon} alt="weather" className="w-[4rem] h-[4rem]" />
       </div>
-      <p className="text-center font-bold">{temp}&deg;C</p>
+      <p className="text-center font-bold">{tempC}&deg;C</p>
     </div>
   );
 };

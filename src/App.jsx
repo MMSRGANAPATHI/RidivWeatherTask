@@ -37,7 +37,7 @@ function App() {
         <WeatherCard
           place={place}
           windspeed={weather.wspd}
-          temperature={weather.temperature}
+          temp={weather.temp}
           heatIndex={weather.heatIndex}
           humidity={weather.humidity}
           conditions={weather.conditions}
